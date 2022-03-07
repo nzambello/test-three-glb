@@ -1,26 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Canvas } from '@react-three/fiber'
+import { Suspense } from 'react'
+import Model from './Model'
+import Loader from './Loader'
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Canvas>
+        <Suspense fallback={<Loader />}>
+          <Model position={[1, -4, 2]} scale={7} />
+        </Suspense>
+      </Canvas>
     </div>
-  );
+  )
 }
-
-export default App;
